@@ -98,7 +98,15 @@ endfunction
 
 " ===== Get a block of lisp-like data
 function! REPLWIN_lispy_block()
-  exe "normal! ?(\<cr>"
+  " Behave differently on an opening or closing paren
+  exe "normal! \\"lyl"
+  if @l == '('
+     " Do nothing
+  elseif @l == ')'
+     exe "normal! %"
+  else
+     exe "normal! ?(\<cr>"
+  endif
   exe "normal! \\"ly%\<cr>"
 endfunction
 
