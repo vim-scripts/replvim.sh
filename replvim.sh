@@ -194,7 +194,7 @@ focus
 resize 10
 screen
 title $repl
-exec ... socat -u PIPE:$pipe EXEC:${repl},sigquit
+exec ... socat -u PIPE:$pipe,ignoreeof EXEC:${repl},sigquit
 focus
 title "vim"
 exec ... vim -c 'so $vim_script' $3
