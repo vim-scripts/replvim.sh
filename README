@@ -1,0 +1,38 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=1079
+
+UNIX command-line only
+
+ Usage : replvim.sh [options] replname code_type file
+
+Runs a screen/vim session on the given file so that one window
+holds a repl and another window holds vim. 
+Hit:
+<leader>e    to eval the current expression 
+<leader>r     to evaluate the given marked range
+<leader>f     to evaluate the whole file
+ctrl-a <TAB>  to switch windows to the repl 
+ctrl-a \      to exit everything 
+Set the leader in vim with 
+:let mapleader = "," 
+replacing "," with the key you like the most
+
+Arguments (wrap these in an alias or sh script):
+ replname   The repl being used (ocaml, bigloo, chicken have been tested)
+ code_type  Can be 'lisp' for lisp-like or 'ocaml' 
+ file               The file for vim to edit
+
+Options:
+ --lines n   Use n lines of screen space for the repl
+ --nopipe   Use files instead of pipes. This can be used when vim 6.3
+                    gives FSYNC errors when writing to pipes on some OSes.
+ --echo      Echo the commands being sent to the repl and allow access
+                   to them in the readline history
+
+Requires (on your PATH):
+  socat (http://www.dest-unreach.org/socat/)
+  screen (http://www.gnu.org/software/screen/)
+if you don't have these your life will be much richer for obtaining them
+
+(at saul (dot alien-science org)) welcomes your fixes and extensions
+
+
